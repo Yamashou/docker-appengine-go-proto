@@ -19,6 +19,7 @@ RUN	curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     go get -u golang.org/x/lint/golint && \
     go get -u golang.org/x/tools/cmd/goimports && \
     go get -u mvdan.cc/sh/cmd/shfmt && \
+    go get -u github.com/daisuzu/gsc && \
     rm -rf ${GOPATH}/src/github.com/golang ${GOPATH}/pkg && \
     curl -sSL https://github.com/uber/prototool/releases/download/v${PROTOTOOL_VERSION}/prototool-$(uname -s)-$(uname -m)  -o /usr/local/bin/prototool && chmod +x /usr/local/bin/prototool && \
     curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION} && \
