@@ -2,7 +2,7 @@ FROM gcr.io/gcpug-container/appengine-go:alpine
 
 ARG PROTOC_VERSION=3.6.1
 ARG PROTOTOOL_VERSION=1.3.0
-ARG GOLANGCI_LINT_VERSION=1.12.5
+ARG GOLANGCI_LINT_VERSION=1.13.2
 ENV GO111MODULE on
 
 RUN	curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip" && \
