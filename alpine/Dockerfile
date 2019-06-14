@@ -19,12 +19,12 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     go get -u mvdan.cc/sh/cmd/shfmt && \
     go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     go get -u github.com/daisuzu/gsc && \
-    rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
-    mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git && \
     curl -sSL https://github.com/uber/prototool/releases/download/v${PROTOTOOL_VERSION}/prototool-$(uname -s)-$(uname -m)  -o /usr/local/bin/prototool && chmod +x /usr/local/bin/prototool && \
     curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION} && \
     apk add --no-cache \
         nodejs-npm \
-        bind-tools
+        bind-tools && \
+    rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
+    mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git
 
 ENV GO111MODULE on
