@@ -17,6 +17,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     go get -u golang.org/x/lint/golint && \
     go get -u golang.org/x/tools/cmd/goimports && \
     go get -u mvdan.cc/sh/cmd/shfmt && \
+    go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     go get -u github.com/daisuzu/gsc && \
     rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
     mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git && \
