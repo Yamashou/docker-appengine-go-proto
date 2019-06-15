@@ -30,7 +30,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk && \
     apk add glibc-2.29-r0.apk && \
-    ln -s /lib/libc.musl-x86_64.so.1 /lib64/libc.musl-x86_64.so.1 && \
+    ln -s /lib/libc.musl-x86_64.so.1 /usr/lib/libc.musl-x86_64.so.1 && \
     rm -f glibc-2.29-r0.apk && \
     rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
     mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git
