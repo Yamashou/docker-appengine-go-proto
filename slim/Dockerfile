@@ -1,8 +1,8 @@
 FROM gcr.io/gcpug-container/appengine-go:slim
 
-ARG PROTOC_VERSION=3.8.0
-ARG PROTOTOOL_VERSION=1.8.0
-ARG GOLANGCI_LINT_VERSION=1.17.1
+ARG PROTOC_VERSION=3.10.0
+ARG PROTOTOOL_VERSION=1.9.0
+ARG GOLANGCI_LINT_VERSION=1.21.0
 
 RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip" && \
 	mkdir protoc && \
@@ -20,6 +20,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     go get -u mvdan.cc/sh/cmd/shfmt && \
     go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     go get -u github.com/daisuzu/gsc && \
+    go get -u github.com/sonatard/pblint && \
     cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports && \
     curl -sSL https://github.com/uber/prototool/releases/download/v${PROTOTOOL_VERSION}/prototool-$(uname -s)-$(uname -m)  -o /usr/local/bin/prototool && chmod +x /usr/local/bin/prototool && \
     curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION} && \
