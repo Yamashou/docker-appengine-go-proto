@@ -10,6 +10,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     cp ./protoc/bin/protoc /usr/local/bin/ && \
     cp -rf ./protoc/include/google /usr/local/include/ && \
     rm protoc.zip protoc -rf && \
+    go get -u github.com/envoyproxy/protoc-gen-validate && \
     go get -u github.com/99designs/gqlgen && \
     go get -u github.com/golang/protobuf/protoc-gen-go && \
     go get -u github.com/nametake/protoc-gen-gohttp && \
