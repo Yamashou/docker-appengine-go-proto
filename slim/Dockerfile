@@ -37,7 +37,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
     mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git
 
-RUN go get -u github.com/envoyproxy/protoc-gen-validate && cd $GOPATH/src/github.com/envoyproxy/protoc-gen-validate && make build && cd $(mktemp -d)
+RUN go get -u github.com/envoyproxy/protoc-gen-validate && cd $GOPATH/src/github.com/envoyproxy/protoc-gen-validate && make build 
 
 ENV GO111MODULE on
 
