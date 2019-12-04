@@ -10,8 +10,8 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     cp ./protoc/bin/protoc /usr/local/bin/ && \
     cp -rf ./protoc/include/google /usr/local/include/ && \
     rm protoc.zip protoc -rf && \
-    go get -u github.com/envoyproxy/protoc-gen-validate && \
-    go get -u github.com/99designs/gqlgen && \
+    go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
+    cd $(mktemp -d); go mod init tmp;go get -u github.com/99designs/gqlgen && \
     go get -u github.com/golang/protobuf/protoc-gen-go && \
     go get -u github.com/nametake/protoc-gen-gohttp && \
     go get -u github.com/favadi/protoc-go-inject-tag && \
@@ -26,11 +26,11 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     go get -u mvdan.cc/unparam && \
     go get -u gitlab.com/opennota/check/cmd/structcheck && \
     go get -u gitlab.com/opennota/check/cmd/varcheck && \
-    go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     go get -u github.com/daisuzu/gsc && \
+    go get -u github.com/envoyproxy/protoc-gen-validate && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     \
-	apt-get update && \
+ 	apt-get update && \
 	apt-get install -yqq --no-install-suggests --no-install-recommends \
 		npm \
 		dnsutils && \
