@@ -12,7 +12,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     rm protoc.zip protoc -rf && \
     go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     cd $(mktemp -d); go mod init tmp;go get -u github.com/99designs/gqlgen && \
-    go get -v -u github.com/golang/protobuf/protoc-gen-go && \
+    go get -u github.com/golang/protobuf/protoc-gen-go && \
     go get -u github.com/nametake/protoc-gen-gohttp && \
     go get -u github.com/favadi/protoc-go-inject-tag && \
     curl -sSL https://github.com/uber/prototool/releases/download/v${PROTOTOOL_VERSION}/prototool-$(uname -s)-$(uname -m)  -o /usr/local/bin/prototool && chmod +x /usr/local/bin/prototool && \
