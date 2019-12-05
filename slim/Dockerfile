@@ -27,7 +27,6 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     go get -u gitlab.com/opennota/check/cmd/structcheck && \
     go get -u gitlab.com/opennota/check/cmd/varcheck && \
     go get -u github.com/daisuzu/gsc && \
-    go get -u github.com/envoyproxy/protoc-gen-validate && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     \
  	apt-get update && \
@@ -37,6 +36,8 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     rm -rf /var/lib/apt/lists/* && \
     rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
     mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git
+
+RUN go get -u github.com/envoyproxy/protoc-gen-validate && cd $GOPATH/src/github.com/envoyproxy/protoc-gen-validate && make build 
 
 ENV GO111MODULE on
 
