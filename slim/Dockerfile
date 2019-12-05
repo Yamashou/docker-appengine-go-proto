@@ -12,7 +12,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     rm protoc.zip protoc -rf && \
     go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     cd $(mktemp -d); go mod init tmp;go get -u github.com/99designs/gqlgen && \
-    go get -u github.com/golang/protobuf/protoc-gen-go && \
+    go get -v -u github.com/golang/protobuf/protoc-gen-go && \
     go get -u github.com/nametake/protoc-gen-gohttp && \
     go get -u github.com/favadi/protoc-go-inject-tag && \
     curl -sSL https://github.com/uber/prototool/releases/download/v${PROTOTOOL_VERSION}/prototool-$(uname -s)-$(uname -m)  -o /usr/local/bin/prototool && chmod +x /usr/local/bin/prototool && \
@@ -35,9 +35,10 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
 		dnsutils && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
-    mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git
+    mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git && \
+    mkdir -p ${GOPATH}/src/github.com/envoyproxy && cd $GOPATH/src/github.com/envoyproxy && git clone --depth 1 https://github.com/envoyproxy/protoc-gen-validate.git && \
+    cd $GOPATH/src/github.com/envoyproxy/protoc-gen-validate && make build
 
-RUN go get -u github.com/envoyproxy/protoc-gen-validate && cd $GOPATH/src/github.com/envoyproxy/protoc-gen-validate && make build 
 
 ENV GO111MODULE on
 
