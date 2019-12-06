@@ -10,21 +10,21 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     cp ./protoc/bin/protoc /usr/local/bin/ && \
     cp -rf ./protoc/include/google /usr/local/include/ && \
     rm protoc.zip protoc -rf && \
-    go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
-    cd $(mktemp -d); go mod init tmp;go get -u github.com/99designs/gqlgen && \
+    cd $(mktemp -d); go mod init tmp; go get -u github.com/99designs/gqlgen; cd - && \
     go get -u github.com/golang/protobuf/protoc-gen-go && \
     go get -u github.com/nametake/protoc-gen-gohttp && \
     go get -u github.com/favadi/protoc-go-inject-tag && \
     curl -sSL https://github.com/uber/prototool/releases/download/v${PROTOTOOL_VERSION}/prototool-$(uname -s)-$(uname -m)  -o /usr/local/bin/prototool && chmod +x /usr/local/bin/prototool && \
     go get -u github.com/sonatard/pblint && \
     go get -u golang.org/x/tools/cmd/goimports && \
-    cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports && \
+    cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports; cd - && \
     go get -u mvdan.cc/sh/cmd/shfmt && \
     curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION} && \
+    go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     go get -u github.com/daisuzu/gsc && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     \
- 	apt-get update && \
+    apt-get update && \
 	apt-get install -yqq --no-install-suggests --no-install-recommends \
 		npm \
 		dnsutils && \
