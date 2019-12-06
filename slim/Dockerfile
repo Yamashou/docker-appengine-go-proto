@@ -20,7 +20,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports; cd - && \
     cd $(mktemp -d); go mod init tmp; go get mvdan.cc/sh/v3/cmd/shfmt; cd - && \
     curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION} && \
-    cd $(mktemp -d); go mod init tmp; go get -u github.com/sachaos/xerrchk/cmd/xerrchk; cd - && \
+    go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     cd $(mktemp -d); go mod init tmp; go get -u github.com/daisuzu/gsc; cd - && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     \
