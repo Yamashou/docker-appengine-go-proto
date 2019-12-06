@@ -31,7 +31,7 @@ RUN curl -fo protoc.zip -sSL "https://github.com/google/protobuf/releases/downlo
     rm -rf /var/lib/apt/lists/* && \
     rm -rf ${GOPATH}/src ${GOPATH}/pkg && \
     mkdir -p ${GOPATH}/src/github.com/googleapis && cd ${GOPATH}/src/github.com/googleapis && git clone --depth 1 https://github.com/googleapis/googleapis.git && \
-    mkdir -p ${GOPATH}/src/github.com/envoyproxy && cd $GOPATH/src/github.com/envoyproxy && git clone --depth 1 https://github.com/envoyproxy/protoc-gen-validate.git && \
+    mkdir -p ${GOPATH}/src/github.com/envoyproxy && cd ${GOPATH}/src/github.com/envoyproxy && git clone --depth 1 https://github.com/envoyproxy/protoc-gen-validate.git && \
     cd $GOPATH/src/github.com/envoyproxy/protoc-gen-validate && make build
 
 
