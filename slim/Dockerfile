@@ -6,7 +6,7 @@ RUN cd $(mktemp -d); go mod init tmp; go get -u github.com/99designs/gqlgen; cd 
     cd $(mktemp -d); go mod init tmp; go get -u golang.org/x/tools/cmd/goimports; cd - && \
     cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports; cd - && \
     cd $(mktemp -d); go mod init tmp; go get mvdan.cc/sh/v3/cmd/shfmt; cd - && \
-    curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v${GOLANGCI_LINT_VERSION} && \
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin ${GOLANGCI_LINT_VERSION} && \
     go get -u github.com/sachaos/xerrchk/cmd/xerrchk && \
     cd $(mktemp -d); go mod init tmp; go get -u github.com/daisuzu/gsc; cd - && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
