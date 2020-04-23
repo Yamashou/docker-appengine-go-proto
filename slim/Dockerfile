@@ -1,6 +1,6 @@
 FROM gcr.io/gcpug-container/appengine-go:slim
 
-ARG GOLANGCI_LINT_VERSION=v1.23.3
+ARG GOLANGCI_LINT_VERSION=v1.25.0
 
 RUN cd $(mktemp -d); go mod init tmp; go get -u github.com/99designs/gqlgen; cd - && \
     cd $(mktemp -d); go mod init tmp; go get -u golang.org/x/tools/cmd/goimports; cd - && \
